@@ -1,0 +1,6 @@
+/*.gem
+Gemfile.lock
+/.bundle/
+/tmp/
+/coverage/
+/.byebug_history
