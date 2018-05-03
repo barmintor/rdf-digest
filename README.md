@@ -3,6 +3,7 @@
 An implementation of the graph hashing algorithm described by Höfig/Schieferdecker in "Hashing of RDF Graphs and a Solution to the Blank Node Problem".
 
 http://ceur-ws.org/Vol-1259
+http://publica.fraunhofer.de/documents/N-326390.html
 
 ## Example Usage
 
