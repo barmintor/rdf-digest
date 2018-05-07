@@ -1,0 +1,11 @@
+@prefix ex: <http://ex#> .
+
+_:01 ex:pred ex:C ;
+   ex:pred [
+   ex:pred ex:A ;
+   ex:pred ex:C ] .
+
+_:02 ex:pred ex:C ;
+   ex:pred [
+   ex:pred ex:B ;
+   ex:pred ex:C ] .

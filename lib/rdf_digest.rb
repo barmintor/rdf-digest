@@ -15,6 +15,10 @@ module RDF::Digest
   # Höfig/Schieferdecker in "Hashing of RDF Graphs and a Solution to the Blank Node Problem".
   # http://ceur-ws.org/Vol-1259
   def self.hash(graph)
+    ::Digest::SHA256.hexdigest(get_graph_string(graph))
+  end
+
+  def self.get_graph_string(graph)
     subject_strings = []
     graph.subjects(unique: true).each do |subject|
       visited_nodes = []
@@ -29,7 +33,7 @@ module RDF::Digest
       converter = Encoding::Converter.new(string_data.encoding, "UTF-8")
       string_data = converter.convert(string_data)
     end
-    ::Digest::SHA256.hexdigest(string_data)
+    string_data
   end
 
   def self.encode_subject(subject, visited_nodes, graph)
@@ -46,7 +50,7 @@ module RDF::Digest
   end
 
   def self.encode_properties(subject, visited_nodes, graph)
-    predicates = predicates(subject, graph).sort
+    predicates = predicates(subject, graph).sort.uniq
     result = String.new
     predicates.each do |predicate|
       result << A_P << predicate
